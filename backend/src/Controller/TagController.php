@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TagController extends AbstractController
 {
-    #[Route('/tag', name: 'app_tag')]
+    #[Route('/api/tag', name: 'api_tag')]
     public function index(): JsonResponse
     {
         return $this->json([
