@@ -35,6 +35,7 @@ class User
     private ?string $title = null;
 
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'users')]
+    #[Groups(["user"])]
     private Collection $tags;
 
     public function __construct()

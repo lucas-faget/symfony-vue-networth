@@ -14,11 +14,11 @@ class Tag
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["tag"])]
+    #[Groups(["user", "tag"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["tag"])]
+    #[Groups(["user", "tag"])]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'tags')]
