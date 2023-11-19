@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -14,18 +15,23 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["user"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user"])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user"])]
     private ?string $title = null;
 
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'users')]

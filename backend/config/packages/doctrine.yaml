@@ -1,16 +1,5 @@
-parameters:
-    env(DATABASE_URL): ''
-
 doctrine:
     dbal:
-        # driver: 'pdo_mysql'
-        # server_version: '5.7'
-        # charset: utf8mb4
-        # host: 127.0.0.1
-        # port: 3306
-        # dbname: '%env(MYSQL_DATABASE)%'
-        # user: '%env(MYSQL_USER)%'
-        # password: '%env(MYSQL_PASSWORD)%'
         url: '%env(resolve:DATABASE_URL)%'
 
         profiling_collect_backtrace: '%kernel.debug%'

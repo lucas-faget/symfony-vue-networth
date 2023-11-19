@@ -19,7 +19,11 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findAll();
 
-        return $this->json($users);
+        // $users = $serializer->serialize($users, 'json', ["groups" => "user"]);
+
+        // return new JsonResponse($users, 200, [], true);
+
+        return $this->json($users, 200, [], ["groups" => "user"]);
     }
 
     #[Route('/', name: 'api_user_new', methods: ['POST'])]
