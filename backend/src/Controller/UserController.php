@@ -3,13 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/api/user')]
 class UserController extends AbstractController
@@ -27,41 +29,49 @@ class UserController extends AbstractController
     }
 
     #[Route('/', name: 'api_user_new', methods: ['POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, SerializerInterface $serializer, EntityManagerInterface $entityManager, ValidatorInterface $validator): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $json = $request->getContent();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        try {
+            $user = $serializer->deserialize($json, User::class, 'json');
+
+            $errors = $validator->validate($user);
+
+            if (count($errors) > 0) {
+                return $this->json($errors, 400);
+            }
+
             $entityManager->persist($user);
             $entityManager->flush();
-        }
 
-        return $this->json([
-            'message' => 'User created successfully'
-        ]);
+            return $this->json([$user, 201, [], ["groups" => "user"]]);
+
+        } catch (NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 
     #[Route('/{id}', name: 'api_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->json($user);
+        return $this->json($user, 200, [], ["groups" => "user"]);
     }
 
     #[Route('/{id}', name: 'api_user_edit', methods: ['PUT'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, SerializerInterface $serializer, User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $json = $request->getContent();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-        }
+        $user = $serializer->deserialize($json, User::class, 'json');
 
-        return $this->json([
-            'message' => 'User updated successfully'
-        ]);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->json([$user, 200, [], ["groups" => "user"]]);
     }
 
     #[Route('/{id}', name: 'api_user_delete', methods: ['DELETE'])]
@@ -71,7 +81,8 @@ class UserController extends AbstractController
         $entityManager->flush();
 
         return $this->json([
+            'status' => 204,
             'message' => 'User deleted successfully'
-        ]);
+        ], 204);
     }
 }
