@@ -1,6 +1,15 @@
 :root {
-    --color-white: hsl(0,0%,100%);
-    --color-light-gray: hsl(0,0%,95%);
+    --color-gray-100: hsl(0,0%,100%);
+    --color-gray-90: hsl(0,0%,90%);
+    --color-gray-80: hsl(0,0%,80%);
+    --color-gray-70: hsl(0,0%,70%);
+    --color-gray-60: hsl(0,0%,60%);
+    --color-gray-50: hsl(0,0%,50%);
+    --color-gray-40: hsl(0,0%,40%);
+    --color-gray-30: hsl(0,0%,30%);
+    --color-gray-20: hsl(0,0%,20%);
+    --color-gray-10: hsl(0,0%,10%);
+    --color-gray-0: hsl(0,0%,0%);
 
     --aside-width: 300px;
     --middle-section-width: 500px;
@@ -11,5 +20,28 @@
 }
 
 body {
+    background: var(--color-gray-90);
+    min-height: 100vh;
     margin: 0;
+    font-family: 'Open sans';
+}
+
+.text-gray {
+    color: var(--color-gray-60);
+}
+
+.text-dark {
+    color: var(--color-gray-20);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pt-20 {
+    padding-top: 20px;
 }

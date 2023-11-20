@@ -16,9 +16,7 @@
 
 <style scoped>
     .homepage {
-        background: var(--color-light-gray);
         padding-block: var(--section-gap);
-        min-height: 100vh;
         display: flex;
         justify-content: center;
     }
@@ -30,7 +28,8 @@
     }
 
     .left, .middle, .right {
-        background: var(--color-white);
+        background: var(--color-gray-100);
+        padding-bottom: 20px;
         border-radius: 10px;
     }
 
@@ -72,7 +71,7 @@
 
         .right {
             grid-column: 1;
-            grid-row: 2;
+            grid-row: 2 / 4;
         }
     }
 
