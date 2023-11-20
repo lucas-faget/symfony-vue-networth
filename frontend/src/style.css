@@ -6,8 +6,8 @@
     --middle-section-width: 500px;
     --section-gap: 20px;
 
-    --first-mobile-breakpoint: calc(2 * var(--aside-width) + var(--middle-section-width));
-    --second-mobile-breakpoint: calc(var(--aside-width) + var(--middle-section-width));
+    --background-image-height: 75px;
+    --profile-image-size: 100px;
 }
 
 body {
