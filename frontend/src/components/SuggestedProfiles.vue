@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue';
     import axios from 'axios';
+    import Header from './Header.vue'
     import SimpleProfileCard from './SimpleProfileCard.vue'
 
     const suggestedUsers = ref([]);
@@ -34,7 +35,9 @@
 
 <template>
     <div class="suggested-profiles">
-        <span class="text-dark">Suggested profiles</span>
+        <div class="header">
+            <Header text="Suggested profiles" />
+        </div>
         <div class="cards">
             <SimpleProfileCard
                 v-for="user in suggestedUsers"
@@ -54,6 +57,10 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+    }
+
+    .header {
+        padding-inline: 5px;
     }
 
     .cards {
