@@ -3,7 +3,7 @@
     
     defineProps<{
         text: string
-    }>()
+    }>();
 </script>
 
 <template>

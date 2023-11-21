@@ -1,13 +1,25 @@
 <script setup lang="ts">
+    import { defineProps, computed } from 'vue';
     
+    const props = defineProps<{
+        image: string,
+        name: string,
+        title: string
+    }>();
+
+    console.log(props.image)
+
+    const backgroundImageStyle = computed(() => ({
+        backgroundImage: `url('${props.image}')`
+    }));
 </script>
 
 <template>
     <div class="simple-profile-card">
-        <div class="profile-image"></div>
+        <div class="profile-image" :style="backgroundImageStyle"></div>
         <div class="text">
-            <span class="text-dark text-bold">Lucas Faget</span>
-            <span class="text-gray">Développeur web</span>
+            <span class="text-dark text-bold">{{ name }}</span>
+            <span class="text-gray">{{ title }}</span>
         </div>
     </div>
 </template>
@@ -24,10 +36,9 @@
     }
 
     .profile-image {
-        background: url("/avatar/6.svg");
         background-size: cover;
-        width: var(--small-profile-image-size);
-        height: var(--small-profile-image-size);
+        min-width: var(--small-profile-image-size);
+        min-height: var(--small-profile-image-size);
         border-radius: 100%;
     }
 
@@ -36,5 +47,8 @@
         flex-direction: column;
         font-size: 14px;
         gap: 3px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>
