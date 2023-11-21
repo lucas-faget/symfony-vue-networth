@@ -1,5 +1,6 @@
 <script lang="ts" setup>
     import ProfileCard from '../components/ProfileCard.vue'
+    import SuggestedProfiles from '../components/SuggestedProfiles.vue'
 </script>
 
 <template>
@@ -9,7 +10,9 @@
                 <ProfileCard />
             </div>
             <div class="middle">middle</div>
-            <div class="right">right</div>
+            <div class="right">
+                <SuggestedProfiles />
+            </div>
         </div>
     </div>
 </template>
@@ -29,7 +32,6 @@
 
     .left, .middle, .right {
         background: var(--color-gray-100);
-        padding-bottom: 20px;
         border-radius: 10px;
     }
 

@@ -28,6 +28,8 @@
     .profile-card {
         position: relative;
         padding-top: calc(var(--background-image-height) + var(--profile-image-size)/2 + 20px);
+        padding-bottom: 20px;
+        padding-inline: 10px;
     }
 
     .background-image {
@@ -68,7 +70,6 @@
     }
 
     .tags {
-        padding-inline: 10px;
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
