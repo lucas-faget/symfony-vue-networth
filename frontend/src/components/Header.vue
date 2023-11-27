@@ -8,29 +8,18 @@
 
 <template>
     <div class="header">
-        <div class="head">{{ text }}</div>
-        <div class="line"></div>
+        {{ text }}
     </div>
 </template>
 
 <style scoped>
     .header {
-        display: flex;
-    }
-
-    .head {
-        background: var(--color-gray-40);
-        color: var(--color-gray-100);
-        height: 30px;
-        padding-inline: 10px;
+        color: var(--color-gray-30);
+        padding-bottom: 5px;
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 16px;
         text-transform: uppercase;
-    }
-
-    .line {
-        flex: 1;
-        border-bottom: 2px solid var(--color-gray-40);
+        border-bottom: 1px solid var(--color-gray-30);
     }
 </style>

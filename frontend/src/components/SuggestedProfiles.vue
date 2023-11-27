@@ -60,7 +60,7 @@
     }
 
     .header {
-        padding-inline: 5px;
+        margin-inline: 5px;
     }
 
     .cards {
