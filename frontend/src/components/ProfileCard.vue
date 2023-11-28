@@ -9,7 +9,7 @@
 
         <div class="content">
             <div class="title">
-                <span class="text-dark text-bold">Lucas Faget</span>
+                <span class="name text-dark text-bold">Lucas Faget</span>
                 <span class="text-gray">Développeur web</span>
             </div>
             <div class="tags">
@@ -67,6 +67,10 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+    }
+
+    .name {
+        font-size: 20px;
     }
 
     .tags {
