@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
     import ProfileCard from '../components/ProfileCard.vue'
     import SuggestedProfiles from '../components/SuggestedProfiles.vue'
 </script>

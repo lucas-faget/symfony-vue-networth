@@ -7,7 +7,7 @@ import ProfilePage from './views/ProfilePage.vue'
 
 const routes = [
     { path: '/', component: HomePage },
-    { path: '/user', component: ProfilePage },
+    { path: '/users/:id(\\d+)', component: ProfilePage },
 ];
 
 const router = createRouter({

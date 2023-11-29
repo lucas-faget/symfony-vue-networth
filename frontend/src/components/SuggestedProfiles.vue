@@ -6,7 +6,7 @@
 
     const suggestedUsers = ref([]);
 
-    const getSuggestedUsers = () => {
+    const fetchSuggestedUsers = () => {
         axios.get("https://localhost:8000/api/user/")
         .then(response => {
             suggestedUsers.value = response.data;
@@ -30,7 +30,7 @@
         return `${firstname} ${lastname}`;
     }
 
-    onMounted(getSuggestedUsers);
+    onMounted(fetchSuggestedUsers);
 </script>
 
 <template>
