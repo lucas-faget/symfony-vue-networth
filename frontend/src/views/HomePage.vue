@@ -1,19 +1,19 @@
 <script setup lang="ts">
-    import ProfileCard from '../components/ProfileCard.vue'
-    import SuggestedProfiles from '../components/SuggestedProfiles.vue'
+    import ProfileArea from '../components/ProfileArea.vue'
+    import ProfileListArea from '../components/ProfileListArea.vue'
 </script>
 
 <template>
     <div class="page">
         <div class="grid grid-1">
             <div>
-                <ProfileCard />
+                <ProfileArea />
             </div>
             <div>
                 middle
             </div>
             <div>
-                <SuggestedProfiles />
+                <ProfileListArea title="Suggested users" />
             </div>
         </div>
     </div>

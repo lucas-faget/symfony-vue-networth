@@ -2,6 +2,8 @@
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
     import axios from 'axios';
+    import ProfileArea from '../components/ProfileArea.vue'
+    import ProfileListArea from '../components/ProfileListArea.vue'
     
     const route = useRoute();
     const user = ref();
@@ -26,8 +28,12 @@
 <template>
     <div class="page">
         <div class="grid grid-2">
-            <div>left</div>
-            <div>right</div>
+            <div>
+                <ProfileArea />
+            </div>
+            <div>
+                <ProfileListArea title="Similar users" />
+            </div>
         </div>
     </div>
 </template>

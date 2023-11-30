@@ -2,32 +2,36 @@
     import { ref, onMounted } from 'vue';
     import axios from 'axios';
     import Header from './Header.vue'
-    import SimpleProfileCard from './SimpleProfileCard.vue'
+    import ProfileCard from './ProfileCard.vue'
 
-    const suggestedUsers = ref([]);
+    defineProps<{
+        title: string
+    }>();
 
-    const fetchSuggestedUsers = () => {
+    const users = ref([]);
+
+    const fetchUsers = () => {
         axios.get("https://localhost:8000/api/users")
         .then(response => {
-            suggestedUsers.value = response.data;
+            users.value = response.data;
             console.log(response.data);
         })
         .catch(error => {
-          console.error('Unable to get data from API', error);
+            console.error('Unable to get data from API', error);
         });
     };
 
-    onMounted(fetchSuggestedUsers);
+    onMounted(fetchUsers);
 </script>
 
 <template>
-    <div class="suggested-profiles">
+    <div class="profile-list-area">
         <div class="header">
-            <Header text="Suggested profiles" />
+            <Header :text="title" />
         </div>
         <div class="cards">
-            <SimpleProfileCard
-                v-for="user in suggestedUsers"
+            <ProfileCard
+                v-for="user in users"
                 :key="user.id"
                 :user="user"
             />
@@ -36,7 +40,7 @@
 </template>
 
 <style scoped>
-    .suggested-profiles {
+    .profile-list-area {
         padding-block: 20px;
         padding-inline: 10px;
         display: flex;
