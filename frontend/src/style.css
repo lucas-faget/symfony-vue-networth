@@ -28,6 +28,11 @@ body {
     font-family: 'Open sans';
 }
 
+a { 
+    text-decoration: none;
+    color: inherit;
+}
+
 .text-gray {
     color: var(--color-gray-60);
 }

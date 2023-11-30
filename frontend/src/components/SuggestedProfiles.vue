@@ -17,19 +17,6 @@
         });
     };
 
-    function getRandomInt(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function getRandomAvatar(): string {
-        const randomInt: number = getRandomInt(1, 16);
-        return `/avatar/${randomInt}.svg`;
-    }
-
-    function getUserName(firstname: string, lastname: string): string {
-        return `${firstname} ${lastname}`;
-    }
-
     onMounted(fetchSuggestedUsers);
 </script>
 
@@ -42,9 +29,7 @@
             <SimpleProfileCard
                 v-for="user in suggestedUsers"
                 :key="user.id"
-                :image="getRandomAvatar()"
-                :name="getUserName(user.firstname, user.lastname)"
-                :title="user.title"
+                :user="user"
             />
         </div>
     </div>

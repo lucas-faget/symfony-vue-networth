@@ -1,27 +1,37 @@
 <script setup lang="ts">
     import { defineProps, computed } from 'vue';
+    import { User } from '../types/User'
     
     const props = defineProps<{
-        image: string,
-        name: string,
-        title: string
+        user: User
     }>();
 
-    console.log(props.image)
+    console.log(props.user);
+
+    function getRandomInt(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomAvatar(): string {
+        const randomInt: number = getRandomInt(1, 16);
+        return `/avatar/${randomInt}.svg`;
+    }
 
     const backgroundImageStyle = computed(() => ({
-        backgroundImage: `url('${props.image}')`
+        backgroundImage: `url('${getRandomAvatar()}')`
     }));
 </script>
 
 <template>
-    <div class="simple-profile-card">
-        <div class="profile-image" :style="backgroundImageStyle"></div>
-        <div class="text">
-            <span class="text-dark text-bold">{{ name }}</span>
-            <span class="text-gray">{{ title }}</span>
+    <router-link :to="{ name: 'user', params: { id: user.id }}">
+        <div class="simple-profile-card">
+            <div class="profile-image" :style="backgroundImageStyle"></div>
+            <div class="text">
+                <span class="text-dark text-bold">{{ `${user.firstname} ${user.lastname}` }}</span>
+                <span class="text-gray">{{ user.title }}</span>
+            </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <style scoped>
@@ -33,6 +43,10 @@
         align-items: center;
         gap: 10px;
         border-radius: calc(var(--small-profile-image-size) + 10px);
+    }
+
+    .simple-profile-card:hover {
+        background: hsl(240,100%,90%);
     }
 
     .profile-image {

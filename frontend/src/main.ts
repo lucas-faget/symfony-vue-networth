@@ -6,8 +6,8 @@ import HomePage from './views/HomePage.vue'
 import ProfilePage from './views/ProfilePage.vue'
 
 const routes = [
-    { path: '/', component: HomePage },
-    { path: '/users/:id(\\d+)', component: ProfilePage },
+    { path: '/', name: 'home', component: HomePage },
+    { path: '/users/:id(\\d+)', name: 'user', component: ProfilePage },
 ];
 
 const router = createRouter({
