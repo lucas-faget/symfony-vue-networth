@@ -27,7 +27,7 @@
 <style scoped>
     .profile-area {
         position: relative;
-        padding-top: calc(var(--background-image-height) + var(--profile-image-size)/2 + 20px);
+        padding-top: calc(var(--background-image-height) + var(--medium-profile-image-size)/2 + 20px);
         padding-bottom: 20px;
         padding-inline: 10px;
     }
@@ -47,9 +47,9 @@
         background: url("/avatar/6.svg");
         background-size: cover;
         position: absolute;
-        top: calc(var(--background-image-height) - (var(--profile-image-size) / 2));
-        left: calc(50% - (var(--profile-image-size) / 2));
-        width: var(--profile-image-size);
+        top: calc(var(--background-image-height) - (var(--medium-profile-image-size) / 2));
+        left: calc(50% - (var(--medium-profile-image-size) / 2));
+        width: var(--medium-profile-image-size);
         aspect-ratio: 1/1;
         border: 3px solid var(--color-gray-100);
         border-radius: 100%;

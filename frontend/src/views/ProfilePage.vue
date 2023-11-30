@@ -1,27 +1,15 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
-    import axios from 'axios';
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
+    import { fetchUser } from '../api/api';
     
     const route = useRoute();
     const user = ref();
 
-    const fetchUser = (id: string) => {
-        axios.get(`https://localhost:8000/api/users/${id}`)
-        .then(response => {
-            user.value = response.data;
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error('Unable to get data from API', error);
-        });
-    };
-
-    console.log(route.params.id);
-    onMounted(() => {
-        fetchUser(route.params.id as string)
+    onMounted(async () => {
+        user.value = fetchUser(route.params.id as string);
     });
 </script>
 

@@ -1,27 +1,18 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue';
-    import axios from 'axios';
     import Header from './Header.vue'
     import ProfileCard from './ProfileCard.vue'
+    import { fetchUsers } from '../api/api';
 
     defineProps<{
         title: string
     }>();
 
-    const users = ref([]);
+    const users = ref();
 
-    const fetchUsers = () => {
-        axios.get("https://localhost:8000/api/users")
-        .then(response => {
-            users.value = response.data;
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error('Unable to get data from API', error);
-        });
-    };
-
-    onMounted(fetchUsers);
+    onMounted(async () => {
+        users.value = await fetchUsers();
+    });
 </script>
 
 <template>

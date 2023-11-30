@@ -2,11 +2,9 @@
     import { defineProps, computed } from 'vue';
     import { User } from '../types/User'
     
-    const props = defineProps<{
+    defineProps<{
         user: User
     }>();
-
-    console.log(props.user);
 
     function getRandomInt(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min + 1)) + min;
