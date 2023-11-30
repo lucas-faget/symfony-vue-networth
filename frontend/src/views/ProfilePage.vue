@@ -3,13 +3,13 @@
     import { useRoute } from 'vue-router'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
-    import { fetchUser } from '../api/api';
+    import { fetchUser } from '../api/api'
     
     const route = useRoute();
-    const user = ref();
+    const user = ref({});
 
     onMounted(async () => {
-        user.value = fetchUser(route.params.id as string);
+        user.value = await fetchUser(route.params.id as string);
     });
 </script>
 
@@ -17,7 +17,7 @@
     <div class="page">
         <div class="grid grid-2">
             <div>
-                <ProfileArea />
+                <ProfileArea :user="user" />
             </div>
             <div>
                 <ProfileListArea title="Similar users" />

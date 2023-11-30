@@ -1,14 +1,14 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue'
     import Header from './Header.vue'
     import ProfileCard from './ProfileCard.vue'
-    import { fetchUsers } from '../api/api';
+    import { fetchUsers } from '../api/api'
 
     defineProps<{
         title: string
     }>();
 
-    const users = ref();
+    const users = ref([]);
 
     onMounted(async () => {
         users.value = await fetchUsers();

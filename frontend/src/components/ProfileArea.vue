@@ -1,24 +1,34 @@
 <script setup lang="ts">
+    import { computed } from 'vue'
     import Tag from './Tag.vue'
+    import { User } from '../types/User'
+    import { getRandomAvatar } from '../api/avatar'
+
+    defineProps<{
+        user: User|{}
+    }>();
+
+    const backgroundImageStyle = computed(() => ({
+        backgroundImage: `url('${getRandomAvatar()}')`
+    }));
 </script>
 
 <template>
     <div class="profile-area">
         <div class="background-image"></div>
-        <div class="profile-image"></div>
+        <div class="profile-image" :style="backgroundImageStyle"></div>
 
         <div class="content">
             <div class="title">
-                <span class="name text-dark text-bold">Lucas Faget</span>
-                <span class="text-gray">Développeur web</span>
+                <span class="name text-dark text-bold">{{ `${user.firstname} ${user.lastname}` }}</span>
+                <span class="text-gray">{{ user.title }}</span>
             </div>
             <div class="tags">
-                <Tag text="Vue.js" />
-                <Tag text="TypeScript" />
-                <Tag text="Symfony" />
-                <Tag text="API" />
-                <Tag text="MySQL" />
-                <Tag text="Docker" />
+                <Tag
+                    v-for="tag in user.tags"
+                    :key="tag.id"
+                    :text="tag.name"
+                />
             </div>
         </div>
     </div>
@@ -44,7 +54,6 @@
     }
 
     .profile-image {
-        background: url("/avatar/6.svg");
         background-size: cover;
         position: absolute;
         top: calc(var(--background-image-height) - (var(--medium-profile-image-size) / 2));

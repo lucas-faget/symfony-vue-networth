@@ -1,19 +1,11 @@
 <script setup lang="ts">
-    import { defineProps, computed } from 'vue';
+    import { computed } from 'vue'
     import { User } from '../types/User'
+    import { getRandomAvatar } from '../api/avatar'
     
     defineProps<{
         user: User
     }>();
-
-    function getRandomInt(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function getRandomAvatar(): string {
-        const randomInt: number = getRandomInt(1, 16);
-        return `/avatar/${randomInt}.svg`;
-    }
 
     const backgroundImageStyle = computed(() => ({
         backgroundImage: `url('${getRandomAvatar()}')`
