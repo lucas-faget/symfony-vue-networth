@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[Route('/api/user')]
+#[Route('/api/users')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'api_user_index', methods: ['GET'])]

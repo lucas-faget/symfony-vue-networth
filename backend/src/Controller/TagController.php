@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TagController extends AbstractController
 {
-    #[Route('/api/tag', name: 'api_tag_index')]
+    #[Route('/api/tags', name: 'api_tag_index')]
     public function index(TagRepository $tagRepository): Response
     {
         $tags = $tagRepository->findAll();
