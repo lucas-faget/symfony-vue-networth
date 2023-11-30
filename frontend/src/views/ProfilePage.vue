@@ -24,13 +24,14 @@
 </script>
 
 <template>
-    <div class="profile-page">
-        {{ route.params.id }}
+    <div class="page">
+        <div class="grid grid-2">
+            <div>left</div>
+            <div>right</div>
+        </div>
     </div>
 </template>
 
 <style scoped>
-    .profile-page {
-
-    }
+    
 </style>
