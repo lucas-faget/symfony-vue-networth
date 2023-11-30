@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref, watch, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
@@ -7,6 +7,12 @@
     
     const route = useRoute();
     const user = ref({});
+
+    watch(() => route.params.id,
+        async newId => {
+            user.value = await fetchUser(newId as string)
+        }
+    )
 
     onMounted(async () => {
         user.value = await fetchUser(route.params.id as string);

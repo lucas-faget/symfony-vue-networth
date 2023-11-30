@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { computed } from 'vue'
+    import { ref, computed, onMounted } from 'vue'
     import Tag from './Tag.vue'
     import { User } from '../types/User'
     import { getRandomAvatar } from '../api/avatar'
@@ -8,15 +8,32 @@
         user: User|{}
     }>();
 
-    const backgroundImageStyle = computed(() => ({
-        backgroundImage: `url('${getRandomAvatar()}')`
+    const backgroundImage = ref(null);
+    const backgroundImageHeight = ref(0);
+
+    const profileArenaStyle = computed(() => ({
+        paddingTop: `calc(${backgroundImageHeight.value}px + var(--medium-profile-image-size)/2 + 20px)`
     }));
+
+    const profileImageStyle = computed(() => ({
+        backgroundImage: `url('${getRandomAvatar()}')`,
+        top: `calc(${backgroundImageHeight.value}px - (var(--medium-profile-image-size) / 2))`
+    }));
+
+    const calculateBackgroundImageHeight = () => {
+        backgroundImageHeight.value = backgroundImage.value?.clientHeight || 0;
+    };
+
+    onMounted(() => {
+        calculateBackgroundImageHeight();
+        window.addEventListener('resize', calculateBackgroundImageHeight);
+    });
 </script>
 
 <template>
-    <div class="profile-area">
-        <div class="background-image"></div>
-        <div class="profile-image" :style="backgroundImageStyle"></div>
+    <div class="profile-area" :style="profileArenaStyle">
+        <div class="background-image" ref="backgroundImage"></div>
+        <div class="profile-image" :style="profileImageStyle"></div>
 
         <div class="content">
             <div class="title">
@@ -37,7 +54,7 @@
 <style scoped>
     .profile-area {
         position: relative;
-        padding-top: calc(var(--background-image-height) + var(--medium-profile-image-size)/2 + 20px);
+        /* padding-top: calc(var(--background-image-height) + var(--medium-profile-image-size)/2 + 20px); */
         padding-bottom: 20px;
         padding-inline: 10px;
     }
@@ -49,14 +66,14 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: var(--background-image-height);
+        aspect-ratio: 4 / 1;
         border-radius: 10px 10px 0 0;
     }
 
     .profile-image {
         background-size: cover;
         position: absolute;
-        top: calc(var(--background-image-height) - (var(--medium-profile-image-size) / 2));
+        /* top: calc(var(--background-image-height) - (var(--medium-profile-image-size) / 2)); */
         left: calc(50% - (var(--medium-profile-image-size) / 2));
         width: var(--medium-profile-image-size);
         aspect-ratio: 1/1;
