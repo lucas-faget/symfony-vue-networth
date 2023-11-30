@@ -7,7 +7,7 @@
     const user = ref();
 
     const fetchUser = (id: string) => {
-        axios.get(`https://localhost:8000/api/user/${id}`)
+        axios.get(`https://localhost:8000/api/users/${id}`)
         .then(response => {
             user.value = response.data;
             console.log(response.data);
