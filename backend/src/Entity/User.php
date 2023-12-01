@@ -39,6 +39,7 @@ class User
     private Collection $tags;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["user"])]
     private ?string $profileImage = null;
 
     public function __construct()
