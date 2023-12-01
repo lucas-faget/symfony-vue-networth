@@ -1,14 +1,14 @@
 <script setup lang="ts">
     import { computed } from 'vue'
     import { User } from '../types/User'
-    import { getRandomAvatar } from '../api/avatar'
+    import { getAvatar } from '../api/avatar'
     
-    defineProps<{
+    const props = defineProps<{
         user: User
     }>();
 
     const backgroundImageStyle = computed(() => ({
-        backgroundImage: `url('${getRandomAvatar()}')`
+        backgroundImage: `url('${getAvatar(props.user.profileImage)}')`
     }));
 </script>
 

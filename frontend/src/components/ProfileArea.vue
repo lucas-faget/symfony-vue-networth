@@ -2,9 +2,9 @@
     import { ref, computed, onMounted } from 'vue'
     import Tag from './Tag.vue'
     import { User } from '../types/User'
-    import { getRandomAvatar } from '../api/avatar'
+    import { getAvatar } from '../api/avatar'
 
-    defineProps<{
+    const props = defineProps<{
         user: User|{}
     }>();
 
@@ -18,7 +18,7 @@
     }));
 
     const profileImageStyle = computed(() => ({
-        backgroundImage: `url('${getRandomAvatar()}')`,
+        backgroundImage: `url('${getAvatar(props.user.profileImage)}')`,
         top: `calc(${backgroundImageHeight.value}px - ${profileImageSize.value/2}px)`,
         left: `calc(50% - ${backgroundImageHeight.value/2}px)`,
         width: `${profileImageSize.value}px`

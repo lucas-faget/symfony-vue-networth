@@ -7,7 +7,7 @@
     const user = ref({});
 
     onMounted(async () => {
-        user.value = await fetchUser('403');
+        user.value = await fetchUser('1');
     });
 </script>
 

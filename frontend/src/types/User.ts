@@ -6,5 +6,6 @@ export type User = {
     lastname: string,
     email: string,
     title: string,
-    tags: Tag[]
+    tags: Tag[],
+    profileImage: string
 }
