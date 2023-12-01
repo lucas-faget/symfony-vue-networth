@@ -27,12 +27,12 @@
 <style scoped>
     .profile-card {
         background: hsl(240,100%,95%);
-        height: calc(var(--small-profile-image-size) + 10px);
+        height: calc(var(--profile-image-size) + 10px);
         padding-inline: 5px 15px;
         display: flex;
         align-items: center;
         gap: 10px;
-        border-radius: calc(var(--small-profile-image-size) + 10px);
+        border-radius: calc(var(--profile-image-size) + 10px);
     }
 
     .profile-card:hover {
@@ -41,8 +41,8 @@
 
     .profile-image {
         background-size: cover;
-        min-width: var(--small-profile-image-size);
-        min-height: var(--small-profile-image-size);
+        min-width: var(--profile-image-size);
+        min-height: var(--profile-image-size);
         border-radius: 100%;
     }
 

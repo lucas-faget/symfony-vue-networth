@@ -16,9 +16,7 @@
     --large-grid-column-width: 820px;
     --grid-gap: 20px;
 
-    --background-image-height: 75px;
-    --medium-profile-image-size: 100px;
-    --small-profile-image-size: 70px;
+    --profile-image-size: 75px;
 }
 
 body {

@@ -11,13 +11,17 @@
     const backgroundImage = ref(null);
     const backgroundImageHeight = ref(0);
 
+    const profileImageSize = computed(() => backgroundImageHeight.value);
+
     const profileArenaStyle = computed(() => ({
-        paddingTop: `calc(${backgroundImageHeight.value}px + var(--medium-profile-image-size)/2 + 20px)`
+        paddingTop: `calc(${backgroundImageHeight.value}px + ${profileImageSize.value/2}px + 20px)`
     }));
 
     const profileImageStyle = computed(() => ({
         backgroundImage: `url('${getRandomAvatar()}')`,
-        top: `calc(${backgroundImageHeight.value}px - (var(--medium-profile-image-size) / 2))`
+        top: `calc(${backgroundImageHeight.value}px - ${profileImageSize.value/2}px)`,
+        left: `calc(50% - ${backgroundImageHeight.value/2}px)`,
+        width: `${profileImageSize.value}px`
     }));
 
     const calculateBackgroundImageHeight = () => {
@@ -54,7 +58,6 @@
 <style scoped>
     .profile-area {
         position: relative;
-        /* padding-top: calc(var(--background-image-height) + var(--medium-profile-image-size)/2 + 20px); */
         padding-bottom: 20px;
         padding-inline: 10px;
     }
@@ -73,9 +76,6 @@
     .profile-image {
         background-size: cover;
         position: absolute;
-        /* top: calc(var(--background-image-height) - (var(--medium-profile-image-size) / 2)); */
-        left: calc(50% - (var(--medium-profile-image-size) / 2));
-        width: var(--medium-profile-image-size);
         aspect-ratio: 1/1;
         border: 3px solid var(--color-gray-100);
         border-radius: 100%;
