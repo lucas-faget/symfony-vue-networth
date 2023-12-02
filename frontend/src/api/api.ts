@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL: string = "https://localhost:8000";
 const USER_ENDPOINT: string = "/api/users";
 
-export const fetchUsers = async () => {
+export const fetchAllUsers = async () => {
     try {
         const response = await axios.get(BASE_URL + USER_ENDPOINT);
         console.log(response.data)

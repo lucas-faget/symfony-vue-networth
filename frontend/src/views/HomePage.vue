@@ -2,12 +2,14 @@
     import { ref, onMounted } from 'vue'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
-    import { fetchUser } from '../api/api'
+    import { fetchUser, fetchAllUsers } from '../api/api'
 
     const user = ref({});
+    const users = ref([]);
 
     onMounted(async () => {
         user.value = await fetchUser('1');
+        users.value = await fetchAllUsers();
     });
 </script>
 
@@ -21,7 +23,7 @@
                 middle
             </div>
             <div>
-                <ProfileListArea title="Suggested users" />
+                <ProfileListArea title="Suggested profiles" :users="users" />
             </div>
         </div>
     </div>
