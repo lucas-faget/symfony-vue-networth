@@ -85,4 +85,12 @@ class UserController extends AbstractController
             'message' => 'User deleted successfully'
         ], 204);
     }
+
+    #[Route('/{id}/similar', name: 'api_user_similar', methods: ['GET'])]
+    public function similar(UserRepository $userRepository, User $user): Response
+    {
+        $users = $userRepository->findSimilarProfiles($user);
+
+        return $this->json($users, 200, [], ["groups" => "user"]);
+    }
 }
