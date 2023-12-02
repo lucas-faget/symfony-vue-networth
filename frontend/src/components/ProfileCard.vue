@@ -26,7 +26,7 @@
 
 <style scoped>
     .profile-card {
-        background: hsl(240,100%,95%);
+        background: var(--color-gray-100);
         height: calc(var(--profile-image-size) + 10px);
         padding-inline: 5px 15px;
         display: flex;
@@ -36,7 +36,7 @@
     }
 
     .profile-card:hover {
-        background: hsl(240,100%,90%);
+        background: var(--color-gray-90);
     }
 
     .profile-image {

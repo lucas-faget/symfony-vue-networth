@@ -31,6 +31,10 @@ a {
     color: inherit;
 }
 
+.text-light {
+    color: var(--color-gray-80);
+}
+
 .text-gray {
     color: var(--color-gray-60);
 }
