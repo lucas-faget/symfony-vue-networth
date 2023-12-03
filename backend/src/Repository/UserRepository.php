@@ -29,10 +29,22 @@ class UserRepository extends ServiceEntityRepository
      */
     public function findSimilarProfiles(User $user): array
     {
+        // return $this->createQueryBuilder('u')
+        //     ->join('u.tags', 't')
+        //     ->andWhere('t IN (:userTags)')
+        //     ->andWhere('u.id != :userId')
+        //     ->setParameter('userTags', $user->getTags())
+        //     ->setParameter('userId', $user->getId())
+        //     ->getQuery()
+        //     ->getResult();
+
         return $this->createQueryBuilder('u')
+            ->select('u', 'COUNT(t.id) as HIDDEN tagCount')
             ->join('u.tags', 't')
             ->andWhere('t IN (:userTags)')
             ->andWhere('u.id != :userId')
+            ->groupBy('u.id')
+            ->orderBy('tagCount', 'DESC')
             ->setParameter('userTags', $user->getTags())
             ->setParameter('userId', $user->getId())
             ->getQuery()

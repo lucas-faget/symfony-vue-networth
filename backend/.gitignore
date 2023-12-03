@@ -6,4 +6,4 @@
 /public/bundles/
 /var/
 /vendor/
-/data/*.sock
+/data/
