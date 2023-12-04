@@ -12,12 +12,15 @@
 
 <style scoped>
     .header {
-        color: var(--color-gray-30);
-        padding-bottom: 5px;
+        background: var(--color-gray-20);
+        color: var(--color-gray-100);
+        width: fit-content;
+        padding: 5px 15px;
         display: flex;
         align-items: center;
         font-size: 16px;
         text-transform: uppercase;
-        border-bottom: 1px solid var(--color-gray-30);
+        border: 2px solid var(--color-gray-20);
+        border-radius: 20px;
     }
 </style>
