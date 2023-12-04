@@ -15,36 +15,40 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?string $title = null;
 
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'users')]
-    #[Groups(["user"])]
+    #[Groups(["user_with_tags"])]
     private Collection $tags;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["user"])]
+    #[Groups(["user", "user_with_tags"])]
     private ?string $profileImage = null;
+
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Post::class, orphanRemoval: true)]
+    private Collection $posts;
 
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +136,36 @@ class User
     public function setProfileImage(?string $profileImage): static
     {
         $this->profileImage = $profileImage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Post $post): static
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): static
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getAuthor() === $this) {
+                $post->setAuthor(null);
+            }
+        }
 
         return $this;
     }

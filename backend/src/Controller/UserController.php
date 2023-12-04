@@ -25,7 +25,7 @@ class UserController extends AbstractController
 
         // return new JsonResponse($users, 200, [], true);
 
-        return $this->json($users, 200, [], ["groups" => "user"]);
+        return $this->json($users, 200, [], ["groups" => "user_with_tags"]);
     }
 
     #[Route('/', name: 'api_user_new', methods: ['POST'])]
@@ -45,7 +45,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->json([$user, 201, [], ["groups" => "user"]]);
+            return $this->json($user, 201, [], ["groups" => "user_with_tags"]);
 
         } catch (NotEncodableValueException $e) {
             return $this->json([
@@ -58,7 +58,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'api_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->json($user, 200, [], ["groups" => "user"]);
+        return $this->json($user, 200, [], ["groups" => "user_with_tags"]);
     }
 
     #[Route('/{id}', name: 'api_user_edit', methods: ['PUT'])]
@@ -71,7 +71,7 @@ class UserController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->json([$user, 200, [], ["groups" => "user"]]);
+        return $this->json($user, 200, [], ["groups" => "user_with_tags"]);
     }
 
     #[Route('/{id}', name: 'api_user_delete', methods: ['DELETE'])]
@@ -91,6 +91,14 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findSimilarProfiles($user);
 
-        return $this->json($users, 200, [], ["groups" => "user"]);
+        return $this->json($users, 200, [], ["groups" => "user_with_tags"]);
+    }
+
+    #[Route('/{id}/posts', name: 'api_user_posts', methods: ['GET'])]
+    public function posts(User $user): Response
+    {
+        $posts = $user->getPosts();
+
+        return $this->json($posts, 200, [], ["groups" => ["post"]]);
     }
 }
