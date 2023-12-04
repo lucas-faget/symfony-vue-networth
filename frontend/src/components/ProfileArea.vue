@@ -2,7 +2,7 @@
     import { ref, computed, onMounted } from 'vue'
     import Tag from './Tag.vue'
     import { User } from '../types/User'
-    import { getAvatar } from '../api/avatar'
+    import { getAvatar } from '../api/image'
 
     const props = defineProps<{
         user: User|{}

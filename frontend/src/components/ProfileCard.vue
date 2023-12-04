@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { computed } from 'vue'
     import { User } from '../types/User'
-    import { getAvatar } from '../api/avatar'
+    import { getAvatar } from '../api/image'
     
     const props = defineProps<{
         user: User

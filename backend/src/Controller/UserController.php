@@ -99,6 +99,6 @@ class UserController extends AbstractController
     {
         $posts = $user->getPosts();
 
-        return $this->json($posts, 200, [], ["groups" => ["post"]]);
+        return $this->json($posts, 200, [], ["groups" => ["post_with_author", "user"]]);
     }
 }

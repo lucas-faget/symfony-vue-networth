@@ -14,9 +14,9 @@ export const fetchAllUsers = async () => {
     }
 };
 
-export const fetchUser = async (id: string) => {
+export const fetchUser = async (userId: string) => {
     try {
-        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${id}`);
+        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}`);
         console.log(response.data)
         return response.data;
     } catch (error) {
@@ -25,9 +25,20 @@ export const fetchUser = async (id: string) => {
     }
 };
 
-export const fetchSimilarProfiles = async (id: string) => {
+export const fetchSimilarProfiles = async (userId: string) => {
     try {
-        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${id}/similar`);
+        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/similar`);
+        console.log(response.data)
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+export const fetchUserPosts = async (userId: string) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/posts`);
         console.log(response.data)
         return response.data;
     } catch (error) {
