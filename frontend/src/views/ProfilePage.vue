@@ -1,7 +1,6 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
-    import Header from '../components/Header.vue'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
     import { fetchUser, fetchSimilarProfiles } from '../api/api'
@@ -30,8 +29,10 @@
                 <ProfileArea :user="user" />
             </div>
             <div class="col">
-                <Header title="Similar profiles" />
-                <ProfileListArea :users="users" />
+                <router-view></router-view>
+            </div>
+            <div class="col">
+                <ProfileListArea title="Similar profiles" :users="users" />
             </div>
         </div>
     </div>
