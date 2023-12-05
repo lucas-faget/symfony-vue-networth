@@ -36,6 +36,17 @@ export const fetchSimilarProfiles = async (userId: string) => {
     }
 };
 
+export const fetchSuggestedProfiles = async (userId: string) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/suggested`);
+        console.log(response.data)
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
 export const fetchUserPosts = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/posts`);

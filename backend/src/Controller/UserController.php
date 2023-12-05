@@ -91,7 +91,15 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findSimilarProfiles($user);
 
-        return $this->json($users, 200, [], ["groups" => "user_with_tags"]);
+        return $this->json($users, 200, [], ["groups" => "user"]);
+    }
+
+    #[Route('/{id}/suggested', name: 'api_user_suggested', methods: ['GET'])]
+    public function ssuggested(UserRepository $userRepository, User $user): Response
+    {
+        $users = $userRepository->findSuggestedProfiles($user);
+
+        return $this->json($users, 200, [], ["groups" => "user"]);
     }
 
     #[Route('/{id}/posts', name: 'api_user_posts', methods: ['GET'])]

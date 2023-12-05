@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <div class="post">
+    <div class="area post">
         <ProfileCard
             v-if="post.author"
             :key="post.author.id"
@@ -25,11 +25,8 @@
 
 <style scoped>
     .post {
-        padding: 10px;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        border: 2px solid var(--color-gray-80);
-        border-radius: 10px;
     }
 </style>

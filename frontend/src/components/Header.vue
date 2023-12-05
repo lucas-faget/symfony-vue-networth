@@ -1,26 +1,17 @@
 <script setup lang="ts">
+    import Button from './Button.vue'
+
     defineProps<{
-        text: string
+        title: string
     }>();
 </script>
 
 <template>
-    <div class="header">
-        {{ text }}
+    <div class="area">
+        <Button :text="title" />
     </div>
 </template>
 
 <style scoped>
-    .header {
-        background: var(--color-gray-20);
-        color: var(--color-gray-100);
-        width: fit-content;
-        padding: 5px 15px;
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        text-transform: uppercase;
-        border: 2px solid var(--color-gray-20);
-        border-radius: 20px;
-    }
+
 </style>

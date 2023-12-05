@@ -35,7 +35,7 @@
 </script>
 
 <template>
-    <div class="profile-area" :style="profileArenaStyle">
+    <div class="area profile-area" :style="profileArenaStyle">
         <div class="background-image" ref="backgroundImage"></div>
         <div class="profile-image" :style="profileImageStyle"></div>
 
@@ -58,8 +58,6 @@
 <style scoped>
     .profile-area {
         position: relative;
-        padding-bottom: 20px;
-        padding-inline: 10px;
     }
 
     .background-image {

@@ -47,14 +47,6 @@ a {
     font-weight: bold;
 }
 
-.pt-10 {
-    padding-top: 10px;
-}
-
-.pt-20 {
-    padding-top: 20px;
-}
-
 .page {
     padding-block: var(--grid-gap);
     display: flex;
@@ -66,8 +58,15 @@ a {
     grid-gap: 20px;
 }
 
-.grid > div {
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.area {
     background: var(--color-gray-100);
+    padding: 10px;
     border-radius: 10px;
 }
 

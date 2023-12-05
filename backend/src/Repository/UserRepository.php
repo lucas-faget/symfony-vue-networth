@@ -42,4 +42,18 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * Find suggested profiles to the given user.
+     *
+     * @param User $user
+     * @return array
+     */
+    public function findSuggestedProfiles(User $user): array
+    {
+        return $this->createQueryBuilder('u')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 }
