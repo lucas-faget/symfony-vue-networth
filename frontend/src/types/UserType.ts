@@ -1,11 +1,11 @@
-import { Tag } from "./Tag"
+import { TagType } from "./TagType"
 
-export type User = {
+export type UserType = {
     id: string,
     firstname: string,
     lastname: string,
     email: string,
     title: string,
     profileImage: string,
-    tags?: Tag[],
+    tags?: TagType[],
 }

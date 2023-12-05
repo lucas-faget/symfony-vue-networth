@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import { ref, computed, onMounted } from 'vue'
-    import Tag from './Tag.vue'
-    import { User } from '../types/User'
+    import TagList from './TagList.vue'
+    import { UserType } from '../types/UserType'
     import { getAvatar } from '../api/image'
 
     const props = defineProps<{
-        user: User|{}
+        user: UserType|{}
     }>();
 
     const backgroundImage = ref(null);
@@ -40,17 +40,11 @@
         <div class="profile-image" :style="profileImageStyle"></div>
 
         <div class="content">
-            <div class="title">
-                <span class="name text-dark text-bold">{{ `${user.firstname} ${user.lastname}` }}</span>
+            <div class="text">
+                <span class="text-dark text-large text-bold">{{ `${user.firstname} ${user.lastname}` }}</span>
                 <span class="text-gray">{{ user.title }}</span>
             </div>
-            <div class="tags">
-                <Tag
-                    v-for="tag in user.tags"
-                    :key="tag.id"
-                    :text="tag.name"
-                />
-            </div>
+            <TagList v-if="user.tags" :tags="user.tags"/>
         </div>
     </div>
 </template>
@@ -86,20 +80,10 @@
         gap: 20px;
     }
 
-    .title {
+    .text {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
-    }
-
-    .name {
-        font-size: 20px;
-    }
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
     }
 </style>

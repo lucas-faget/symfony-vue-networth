@@ -6,7 +6,7 @@
 
 <template>
     <div class="tag">
-        <span>{{ text }}</span>
+        <span class="text-small">{{ text }}</span>
     </div>
 </template>
 
@@ -19,7 +19,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 13px;
         border-radius: 15px;
     }
 </style>

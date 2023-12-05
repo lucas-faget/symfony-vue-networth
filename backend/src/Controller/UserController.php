@@ -109,4 +109,12 @@ class UserController extends AbstractController
 
         return $this->json($posts, 200, [], ['groups' => ['post', 'user']]);
     }
+
+    #[Route('/{id}/projects', name: 'api_user_projects', methods: ['GET'])]
+    public function projects(User $user): Response
+    {
+        $projects = $user->getProjects();
+
+        return $this->json($projects, 200, [], ['groups' => ['project', 'tag', 'user']]);
+    }
 }

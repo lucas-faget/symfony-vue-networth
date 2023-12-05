@@ -1,9 +1,9 @@
 <script setup lang="ts">
     import ProfileCard from './ProfileCard.vue'
-    import { User } from '../types/User';
+    import { UserType } from '../types/UserType';
 
     defineProps<{
-        users: User[]
+        users: UserType[]
     }>();
 </script>
 

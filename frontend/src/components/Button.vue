@@ -18,7 +18,6 @@
         padding: 5px 15px;
         display: flex;
         align-items: center;
-        font-size: 16px;
         text-transform: uppercase;
         border: 2px solid var(--color-gray-20);
         border-radius: 20px;

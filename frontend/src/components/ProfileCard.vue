@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import { computed } from 'vue'
-    import { User } from '../types/User'
+    import { UserType } from '../types/UserType'
     import { getAvatar } from '../api/image'
     
     const props = defineProps<{
-        user: User
+        user: UserType
     }>();
 
     const backgroundImageStyle = computed(() => ({
@@ -18,7 +18,7 @@
             <div class="profile-image" :style="backgroundImageStyle"></div>
             <div class="text">
                 <span class="text-dark text-bold">{{ `${user.firstname} ${user.lastname}` }}</span>
-                <span class="text-gray">{{ user.title }}</span>
+                <span class="text-gray text-small">{{ user.title }}</span>
             </div>
         </div>
     </router-link>
@@ -49,7 +49,6 @@
     .text {
         display: flex;
         flex-direction: column;
-        font-size: 14px;
         gap: 3px;
         overflow: hidden;
         white-space: nowrap;

@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import ProfileCard from './ProfileCard.vue'
-    import { Post } from '../types/Post';
+    import { PostType } from '../types/PostType';
     import { getRandomImageUrl } from '../api/image';
 
     defineProps<{
-        post: Post
+        post: PostType
     }>();
 </script>
 
@@ -15,7 +15,7 @@
             :key="post.author.id"
             :user="post.author"
         />
-        <div class="content">
+        <div class="text-dark">
             {{ post.content }}
         </div>
         <!-- <img v-if="post.image" :src="post.image" alt="post_image" /> -->
@@ -27,6 +27,6 @@
     .post {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
     }
 </style>
