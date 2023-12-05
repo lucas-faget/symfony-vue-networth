@@ -13,20 +13,20 @@ class Post
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["post", "post_with_author"])]
+    #[Groups(["post"])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(["post", "post_with_author"])]
+    #[Groups(["post"])]
     private ?string $content = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["post", "post_with_author"])]
+    #[Groups(["post"])]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["post_with_author"])]
+    #[Groups(["post"])]
     private ?User $author = null;
 
     public function getId(): ?int

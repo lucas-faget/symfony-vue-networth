@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use App\Entity\Post;
+use App\Entity\Project;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -34,6 +35,18 @@ class UserFixtures extends Fixture
                 $post->setContent($faker->paragraphs(random_int(1, 5), true));
                 $user->addPost($post);
                 $manager->persist($post);
+            }
+
+            $projectCount = random_int(1, 3);
+            for ($l = 0; $l < $projectCount; $l++) {
+                $project = new Project();
+                $project->setTitle($faker->catchPhrase());
+                $project->setDescription($faker->paragraphs(random_int(1, 5), true));
+                for ($j = 0; $j < $tagCount; $j++) {
+                    $project->addTag($this->getReference('tag_' . random_int(0, 49)));
+                }
+                $user->addProject($project);
+                $manager->persist($project);
             }
 
             $manager->persist($user);

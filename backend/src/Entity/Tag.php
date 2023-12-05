@@ -14,19 +14,23 @@ class Tag
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user_with_tags"])]
+    #[Groups(["tag"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user_with_tags"])]
+    #[Groups(["tag"])]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'tags')]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'tags')]
+    private Collection $projects;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,33 @@ class Tag
     {
         if ($this->users->removeElement($user)) {
             $user->removeTag($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): static
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
+            $project->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): static
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeTag($this);
         }
 
         return $this;

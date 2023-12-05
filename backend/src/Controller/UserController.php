@@ -25,7 +25,7 @@ class UserController extends AbstractController
 
         // return new JsonResponse($users, 200, [], true);
 
-        return $this->json($users, 200, [], ["groups" => "user_with_tags"]);
+        return $this->json($users, 200, [], ['groups' => ['user_with_tags', 'tag']]);
     }
 
     #[Route('/', name: 'api_user_new', methods: ['POST'])]
@@ -45,7 +45,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->json($user, 201, [], ["groups" => "user_with_tags"]);
+            return $this->json($user, 201, [], ['groups' => ['user_with_tags', 'tag']]);
 
         } catch (NotEncodableValueException $e) {
             return $this->json([
@@ -58,7 +58,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'api_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->json($user, 200, [], ["groups" => "user_with_tags"]);
+        return $this->json($user, 200, [], ['groups' => ['user_with_tags', 'tag']]);
     }
 
     #[Route('/{id}', name: 'api_user_edit', methods: ['PUT'])]
@@ -71,7 +71,7 @@ class UserController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->json($user, 200, [], ["groups" => "user_with_tags"]);
+        return $this->json($user, 200, [], ['groups' => ['user_with_tags', 'tag']]);
     }
 
     #[Route('/{id}', name: 'api_user_delete', methods: ['DELETE'])]
@@ -91,7 +91,7 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findSimilarProfiles($user);
 
-        return $this->json($users, 200, [], ["groups" => "user"]);
+        return $this->json($users, 200, [], ['groups' => 'user']);
     }
 
     #[Route('/{id}/suggested', name: 'api_user_suggested', methods: ['GET'])]
@@ -99,7 +99,7 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findSuggestedProfiles($user);
 
-        return $this->json($users, 200, [], ["groups" => "user"]);
+        return $this->json($users, 200, [], ['groups' => 'user']);
     }
 
     #[Route('/{id}/posts', name: 'api_user_posts', methods: ['GET'])]
@@ -107,6 +107,6 @@ class UserController extends AbstractController
     {
         $posts = $user->getPosts();
 
-        return $this->json($posts, 200, [], ["groups" => ["post_with_author", "user"]]);
+        return $this->json($posts, 200, [], ['groups' => ['post', 'user']]);
     }
 }
