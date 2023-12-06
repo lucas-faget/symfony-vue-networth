@@ -8,15 +8,11 @@
     }>();
 
     const route = useRoute();
-
-    function getRouteTarget(route: RouteType) {
-        return route.params ? {name: route.name, params: route.params} : {name: route.name};
-    }
 </script>
 
 <template>
     <div class="area buttons">
-        <router-link v-for="nestedRoute in routes" :key="nestedRoute.id" :to="getRouteTarget(nestedRoute)">
+        <router-link v-for="nestedRoute in routes" :key="nestedRoute.id" :to="{name: nestedRoute.name}">
             <RoundButton :text="nestedRoute.title" :isFilled="route.name === nestedRoute.name" />
         </router-link>
     </div>

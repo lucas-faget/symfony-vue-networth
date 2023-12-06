@@ -12,14 +12,12 @@
         {
             id: 1,
             title: "Posts",
-            name: 'user_posts',
-            params: {id: route.params.id}
+            name: 'user_posts'
         },
         {
             id: 2,
-            title: "Posts",
-            name: 'user_projects',
-            params: {id: route.params.id}
+            title: "Projects",
+            name: 'user_projects'
         },
     ];
     
