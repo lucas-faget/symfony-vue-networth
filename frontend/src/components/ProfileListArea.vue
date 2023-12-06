@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import Button from './Button.vue';
+    import RoundButton from './RoundButton.vue';
     import ProfileCard from './ProfileCard.vue'
     import { UserType } from '../types/UserType';
 
@@ -11,7 +11,7 @@
 
 <template>
     <div class="area profile-list">
-        <Button :text="title" />
+        <RoundButton :text="title" :isFilled="true" />
         <div class="cards">
             <ProfileCard
                 v-for="user in users"

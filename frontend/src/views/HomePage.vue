@@ -2,8 +2,23 @@
     import { ref, onMounted } from 'vue'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
+    import NestedLinksArea from '../components/NestedLinksArea.vue'
     import { fetchUser, fetchSuggestedProfiles } from '../api/api'
     import { connectedUserId } from '../config';
+    import { RouteType } from '../types/RouteType'
+
+    const routes: RouteType[] = [
+        {
+            id: 1,
+            title: "Posts",
+            name: 'home_posts',
+        },
+        {
+            id: 2,
+            title: "Projects",
+            name: 'home_projects',
+        },
+    ];
 
     const user = ref({});
     const users = ref([]);
@@ -21,6 +36,7 @@
                 <ProfileArea :user="user"/>
             </div>
             <div class="col">
+                <NestedLinksArea :routes="routes" />
                 <router-view></router-view>
             </div>
             <div class="col">

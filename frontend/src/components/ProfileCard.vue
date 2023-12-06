@@ -13,7 +13,7 @@
 </script>
 
 <template>
-    <router-link :to="{ name: 'user', params: { id: user.id }}">
+    <router-link :to="{ name: 'user_posts', params: { id: user.id }}">
         <div class="profile-card">
             <div class="profile-image" :style="backgroundImageStyle"></div>
             <div class="text">

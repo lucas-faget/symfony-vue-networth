@@ -3,9 +3,26 @@
     import { useRoute } from 'vue-router'
     import ProfileArea from '../components/ProfileArea.vue'
     import ProfileListArea from '../components/ProfileListArea.vue'
+    import NestedLinksArea from '../components/NestedLinksArea.vue'
     import { fetchUser, fetchSimilarProfiles } from '../api/api'
-    
+    import { RouteType } from '../types/RouteType'
+
     const route = useRoute();
+    const routes: RouteType[] = [
+        {
+            id: 1,
+            title: "Posts",
+            name: 'user_posts',
+            params: {id: route.params.id}
+        },
+        {
+            id: 2,
+            title: "Posts",
+            name: 'user_projects',
+            params: {id: route.params.id}
+        },
+    ];
+    
     const user = ref({});
     const users = ref([]);
 
@@ -29,6 +46,7 @@
                 <ProfileArea :user="user" />
             </div>
             <div class="col">
+                <NestedLinksArea :routes="routes" />
                 <router-view></router-view>
             </div>
             <div class="col">
