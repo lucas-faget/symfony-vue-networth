@@ -112,6 +112,7 @@ a {
 @media screen and (max-width: 1180px) {
     .grid-1 {
         grid-template-columns: var(--grid-column-width-small) var(--grid-column-width-medium);
+        grid-template-rows: auto 1fr;
     }
 
     .grid-1 > div:nth-child(1) {
@@ -160,6 +161,7 @@ a {
 @media screen and (min-width: 1181px) {
     .grid-2 {
         grid-template-columns: var(--grid-column-width-large) var(--grid-column-width-small);
+        grid-template-rows: auto 1fr;
     }
 
     .grid-2 > div:nth-child(1) {
@@ -182,6 +184,7 @@ a {
 @media screen and (max-width: 1180px) {
     .grid-2 {
         grid-template-columns: var(--grid-column-width-medium) var(--grid-column-width-small);
+        grid-template-rows: auto 1fr;
     }
 
     .grid-2 > div:nth-child(1) {
