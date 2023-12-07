@@ -59,6 +59,12 @@ a {
     font-weight: bold;
 }
 
+.horizontal-line {
+    background: var(--color-gray-80);
+    height: 0.5px;
+    width: 100%;
+}
+
 .page {
     padding-block: var(--grid-gap);
     display: flex;
