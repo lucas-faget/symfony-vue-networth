@@ -8,10 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Trait\Timestamps;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
+    use Timestamps;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

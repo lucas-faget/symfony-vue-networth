@@ -22,7 +22,8 @@ class UserFixtures extends Fixture
                 ->setLastname($faker->lastName)
                 ->setEmail($faker->email)
                 ->setTitle($faker->jobTitle)
-                ->setProfileImage(random_int(1, 16) . '.svg');
+                ->setProfileImage(random_int(1, 16) . '.svg')
+                ->setCreatedAt($faker->dateTimeBetween('-1 year', 'now'));
 
             $tagCount = random_int(1, 10);
             for ($j = 0; $j < $tagCount; $j++) {
@@ -33,6 +34,7 @@ class UserFixtures extends Fixture
             for ($k = 0; $k < $postCount; $k++) {
                 $post = new Post();
                 $post->setContent($faker->paragraphs(random_int(1, 5), true));
+                $post->setCreatedAt($faker->dateTimeBetween('-1 year', 'now'));
                 $user->addPost($post);
                 $manager->persist($post);
             }
@@ -42,6 +44,7 @@ class UserFixtures extends Fixture
                 $project = new Project();
                 $project->setTitle($faker->catchPhrase());
                 $project->setDescription($faker->paragraphs(random_int(1, 5), true));
+                $project->setCreatedAt($faker->dateTimeBetween('-1 year', 'now'));
                 for ($j = 0; $j < $tagCount; $j++) {
                     $project->addTag($this->getReference('tag_' . random_int(0, 49)));
                 }
