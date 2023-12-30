@@ -3,6 +3,7 @@
     import ProfileCard from './ProfileCard.vue'
     import { PostType } from '../types/PostType';
     import { getRandomImageUrl } from '../api/image';
+    import { timeDistance } from '../api/date';
 
     defineProps<{
         post: PostType
@@ -11,7 +12,7 @@
 
 <template>
     <div class="area post">
-        <PostHead type="Post" date="3 days ago" />
+        <PostHead type="Post" :date="timeDistance(post.createdAt)" />
         <div class="content">
             <ProfileCard
                 v-if="post.author"

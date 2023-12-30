@@ -5,4 +5,6 @@ export type PostType = {
     content: string,
     image: string,
     author?: UserType,
+    createdAt: string,
+    updatedAt: string
 }

@@ -7,4 +7,6 @@ export type ProjectType = {
     description: string,
     tags?: TagType[],
     creator?: UserType,
+    createdAt: string,
+    updatedAt: string
 }

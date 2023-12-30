@@ -5,13 +5,16 @@ namespace App\Trait;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 trait Timestamps
 {
     #[ORM\Column(name: "created_at", type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Groups(["post", "project"])]
     private $createdAt;
 
     #[ORM\Column(name: "updated_at", type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Groups(["post", "project"])]
     private $updatedAt;
 
     public function getCreatedAt(): ?DateTimeInterface
