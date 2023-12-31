@@ -4,7 +4,7 @@
     import TagList from './TagList.vue'
     import { ProjectType } from '../types/ProjectType';
     import { getRandomImageUrl } from '../api/image';
-    import { timeDistance } from '../api/date';
+    import { relativeTime } from '../api/date';
 
     defineProps<{
         project: ProjectType
@@ -13,7 +13,7 @@
 
 <template>
     <div class="area">
-        <PostHead type="Project" :date="timeDistance(project.createdAt)" />
+        <PostHead type="Project" :date="relativeTime(project.createdAt)" />
         <div class="content">
             <ProfileCard
                 v-if="project.creator"

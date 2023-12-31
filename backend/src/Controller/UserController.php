@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\PostRepository;
+use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -103,17 +105,17 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/posts', name: 'api_user_posts', methods: ['GET'])]
-    public function posts(User $user): Response
+    public function posts(PostRepository $postRepository, User $user): Response
     {
-        $posts = $user->getPosts();
+        $posts = $postRepository->userPosts($user);
 
         return $this->json($posts, 200, [], ['groups' => ['post', 'user']]);
     }
 
     #[Route('/{id}/projects', name: 'api_user_projects', methods: ['GET'])]
-    public function projects(User $user): Response
+    public function projects(ProjectRepository $projectRepository, User $user): Response
     {
-        $projects = $user->getProjects();
+        $projects = $projectRepository->userProjects($user);
 
         return $this->json($projects, 200, [], ['groups' => ['project', 'tag', 'user']]);
     }
