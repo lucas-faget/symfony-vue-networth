@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    defineProps<{
-        text: string
-    }>();
+defineProps<{
+    text: string;
+}>();
 </script>
 
 <template>
@@ -11,14 +11,13 @@
 </template>
 
 <style scoped>
-    .tag {
-        background: hsl(240,100%,75%);
-        color: #fff;
-        height: 25px;
-        padding-inline: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 15px;
-    }
+.tag {
+    background: hsl(240, 100%, 75%);
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
 </style>

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const BASE_URL: string = "https://localhost:8000";
 const USER_ENDPOINT: string = "/api/users";
@@ -6,7 +6,7 @@ const USER_ENDPOINT: string = "/api/users";
 export const fetchAllUsers = async () => {
     try {
         const response = await axios.get(BASE_URL + USER_ENDPOINT);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -17,7 +17,7 @@ export const fetchAllUsers = async () => {
 export const fetchUser = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}`);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -28,7 +28,7 @@ export const fetchUser = async (userId: string) => {
 export const fetchSimilarProfiles = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/similar`);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -39,7 +39,7 @@ export const fetchSimilarProfiles = async (userId: string) => {
 export const fetchSuggestedProfiles = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/suggested`);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -50,7 +50,7 @@ export const fetchSuggestedProfiles = async (userId: string) => {
 export const fetchUserPosts = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/posts`);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -61,7 +61,7 @@ export const fetchUserPosts = async (userId: string) => {
 export const fetchUserProjects = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}${USER_ENDPOINT}/${userId}/projects`);
-        console.log(response.data)
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);

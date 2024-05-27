@@ -1,12 +1,12 @@
-import { TagType } from "./TagType"
-import { UserType } from "./UserType"
+import { TagType } from "./TagType";
+import { UserType } from "./UserType";
 
 export type ProjectType = {
-    id: string,
-    title: string,
-    description: string,
-    tags?: TagType[],
-    creator?: UserType,
-    createdAt: string,
-    updatedAt: string
-}
+    id: string;
+    title: string;
+    description: string;
+    tags?: TagType[];
+    creator?: UserType;
+    createdAt: string;
+    updatedAt: string;
+};

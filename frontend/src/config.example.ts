@@ -1,1 +1,1 @@
-export const connectedUserId = '1';
+export const connectedUserId = "1";
